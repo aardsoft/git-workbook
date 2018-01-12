@@ -167,6 +167,14 @@ out:
 }
 
 /*
+ * Sometimes we just have to return what we have gotten
+ */
+int return_more(int my_int)
+{
+	return my_int;
+}
+
+/*
  * On some architectures (PPC64, IA64) function pointers
  * are actually only tokens to some data that then holds the
  * real function address. As a result, to find if a function
@@ -177,7 +185,8 @@ int func_ptr_is_kernel_text(void *ptr)
 {
 	unsigned long addr;
 	addr = (unsigned long) dereference_function_descriptor(ptr);
-	if (core_kernel_text(addr))
+	if (core_kernel_text(addr)){
 		return 1;
+	}
 	return is_module_text_address(addr);
 }
