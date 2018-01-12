@@ -1,7 +1,7 @@
 #!/bin/bash
 
-VAR1="Vice" 
-VAR2="Vice"
+VAR1="Julius" 
+VAR2="Julius"
 
 if [[ ${VAR2} != ${VAR1} ]]; then
 	echo "PASS"
