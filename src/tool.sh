@@ -1,7 +1,7 @@
 #!/bin/bash
 
-VAR1="Aardsoft"
-VAR2="Aardsoft"
+VAR1="Metus" 
+VAR2="Metus"
 
 if [[ ${VAR2} != ${VAR1} ]]; then
 	echo "PASS"
