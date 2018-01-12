@@ -19,10 +19,12 @@
 #include <linux/memory.h>
 #include <linux/extable.h>
 #include <linux/module.h>
+#include <linux/cgroup.h>
 #include <linux/mutex.h>
 #include <linux/init.h>
 #include <linux/kprobes.h>
 #include <linux/filter.h>
+#include <linux/file.h>
 
 #include <asm/sections.h>
 #include <linux/uaccess.h>
@@ -117,6 +119,11 @@ int __kernel_text_address(unsigned long addr)
 	if (init_kernel_text(addr))
 		return 1;
 	return 0;
+}
+
+int func_does_not_really_much(int more)
+{
+	return more;
 }
 
 int kernel_text_address(unsigned long addr)
