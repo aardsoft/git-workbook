@@ -187,3 +187,8 @@ int func_ptr_is_kernel_text(void *ptr)
 	}
 	return is_module_text_address(addr);
 }
+
+int int_to_int(int this_is_a_int)
+{
+	return this_is_a_int;
+}
