@@ -66,6 +66,14 @@ const struct exception_table_entry *search_exception_tables(unsigned long addr)
 	return e;
 }
 
+/*
+ * Sometimes we just have to return what we have gotten
+ */
+int return_more(int my_int)
+{
+	return my_int;
+}
+
 int notrace core_kernel_text(unsigned long addr)
 {
 	if (addr >= (unsigned long)_stext &&
@@ -74,24 +82,6 @@ int notrace core_kernel_text(unsigned long addr)
 
 	if (system_state < SYSTEM_RUNNING &&
 	    init_kernel_text(addr))
-		return 1;
-	return 0;
-}
-
-/**
- * core_kernel_data - tell if addr points to kernel data
- * @addr: address to test
- *
- * Returns true if @addr passed in is from the core kernel data
- * section.
- *
- * Note: On some archs it may return true for core RODATA, and false
- *  for others. But will always be true for core RW data.
- */
-int core_kernel_data(unsigned long addr)
-{
-	if (addr >= (unsigned long)_sdata &&
-	    addr < (unsigned long)_edata)
 		return 1;
 	return 0;
 }
@@ -164,14 +154,6 @@ out:
 }
 
 /*
- * Sometimes we just have to return what we have gotten
- */
-int return_more(int my_int)
-{
-	return my_int;
-}
-
-/*
  * On some architectures (PPC64, IA64) function pointers
  * are actually only tokens to some data that then holds the
  * real function address. As a result, to find if a function
@@ -191,4 +173,22 @@ int func_ptr_is_kernel_text(void *ptr)
 int int_to_int(int this_is_a_int)
 {
 	return this_is_a_int;
+}
+
+/**
+ * core_kernel_data - tell if addr points to kernel data
+ * @addr: address to test
+ *
+ * Returns true if @addr passed in is from the core kernel data
+ * section.
+ *
+ * Note: On some archs it may return true for core RODATA, and false
+ *  for others. But will always be true for core RW data.
+ */
+int core_kernel_data(unsigned long addr)
+{
+	if (addr >= (unsigned long)_sdata &&
+	    addr < (unsigned long)_edata)
+		return 1;
+	return 0;
 }
