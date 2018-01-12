@@ -54,6 +54,15 @@ void __init sort_main_extable(void)
 	}
 }
 
+void do_something_with_int(int i)
+{
+	if (i > 0){
+		i + 1;
+	} else {
+		i - 1;
+	}
+}
+
 /* Given an address, look for it in the exception tables. */
 const struct exception_table_entry *search_exception_tables(unsigned long addr)
 {
