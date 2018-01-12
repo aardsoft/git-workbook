@@ -66,14 +66,6 @@ const struct exception_table_entry *search_exception_tables(unsigned long addr)
 	return e;
 }
 
-static inline int init_kernel_text(unsigned long addr)
-{
-	if (addr >= (unsigned long)_sinittext &&
-	    addr < (unsigned long)_einittext)
-		return 1;
-	return 0;
-}
-
 int notrace core_kernel_text(unsigned long addr)
 {
 	if (addr >= (unsigned long)_stext &&
@@ -102,6 +94,11 @@ int core_kernel_data(unsigned long addr)
 	    addr < (unsigned long)_edata)
 		return 1;
 	return 0;
+}
+
+int increment_me(int a)
+{
+	return a+1;
 }
 
 int __kernel_text_address(unsigned long addr)
