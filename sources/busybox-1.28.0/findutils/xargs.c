@@ -147,10 +147,11 @@ static int xargs_exec(void)
 		pid_t pid;
 		int wstat;
  again:
-		if (G.running_procs >= G.max_procs)
+		if (G.running_procs >= G.max_procs) {
 			pid = safe_waitpid(-1, &wstat, 0);
-		else
+		} else {
 			pid = wait_any_nohang(&wstat);
+		}
 		if (pid > 0) {
 			/* We may have children we don't know about:
 			 * sh -c 'sleep 1 & exec xargs ...'

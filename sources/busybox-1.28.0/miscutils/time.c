@@ -418,11 +418,11 @@ int time_main(int argc UNUSED_PARAM, char **argv)
 {
 	resource_t res;
 	/* $TIME has lowest prio (-v,-p,-f FMT overrride it) */
+	int opt;
+	int ex;
 	const char *output_format = getenv("TIME") ? : default_format;
 	char *output_filename;
 	int output_fd;
-	int opt;
-	int ex;
 	enum {
 		OPT_v = (1 << 0),
 		OPT_p = (1 << 1),

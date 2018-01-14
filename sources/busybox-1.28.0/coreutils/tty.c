@@ -34,8 +34,8 @@
 
 #include "libbb.h"
 
-int tty_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
-int tty_main(int argc UNUSED_PARAM, char **argv)
+int tty_main(int argd, char **argv) MAIN_EXTERNALLY_VISIBLE;
+int tty_main(int argd UNUSED_PARAM, char **argv)
 {
 	const char *s;
 	IF_INCLUDE_SUSv2(int silent;)  /* Note: No longer relevant in SUSv3. */

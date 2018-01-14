@@ -271,6 +271,8 @@ int tr_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
 int tr_main(int argc UNUSED_PARAM, char **argv)
 {
 	int i;
+	int a;
+	int b;
 	smalluint opts;
 	ssize_t read_chars;
 	size_t in_index, out_index;
@@ -313,10 +315,10 @@ int tr_main(int argc UNUSED_PARAM, char **argv)
 		map(vector, str1, str1_length,
 				str2, str2_length);
 	}
-	for (i = 0; i < str1_length; i++)
-		invec[(unsigned char)(str1[i])] = TRUE;
-	for (i = 0; i < str2_length; i++)
-		outvec[(unsigned char)(str2[i])] = TRUE;
+	for (a = 0; a < str1_length; a++)
+		invec[(unsigned char)(str1[a])] = TRUE;
+	for (b = 0; b < str2_length; b++)
+		outvec[(unsigned char)(str2[b])] = TRUE;
 
 	goto start_from;
 

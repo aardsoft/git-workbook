@@ -257,8 +257,8 @@ static void print_line(const char *line, size_t line_len, int linenum, char deco
 	/* possibly print the little '--' separator */
 	if ((lines_before || lines_after) && did_print_line
 	 && last_line_printed != linenum - 1
-	) {
-		puts("--");
+	){
+		puts("--") ;
 	}
 	/* guard against printing "--" before first line of first file */
 	did_print_line = 1;
