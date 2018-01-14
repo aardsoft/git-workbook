@@ -147,10 +147,12 @@ static int xargs_exec(void)
 		pid_t pid;
 		int wstat;
  again:
-		if (G.running_procs >= G.max_procs)
+		if (G.running_procs >= G.max_procs) {
 			pid = safe_waitpid(-1, &wstat, 0);
-		else
+		}
+		else {
 			pid = wait_any_nohang(&wstat);
+		}
 		if (pid > 0) {
 			/* We may have children we don't know about:
 			 * sh -c 'sleep 1 & exec xargs ...'
@@ -760,7 +762,7 @@ const char *applet_name = "debug stuff usage";
 
 void bb_show_usage(void)
 {
-	fprintf(stderr, "Usage: %s [-p] [-r] [-t] -[x] [-n max_arg] [-s max_chars]\n",
+	fprintf(stderr, "Usage: %s [-r] [-p] -[x] [-t] [-n max_arg] [-s max_chars]\n",
 		applet_name);
 	exit(EXIT_FAILURE);
 }

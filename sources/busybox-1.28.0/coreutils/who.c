@@ -108,9 +108,9 @@ int who_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
 int who_main(int argc UNUSED_PARAM, char **argv)
 {
 #define CNT_APPLET (ENABLE_USERS + ENABLE_W + ENABLE_WHO)
-	int do_users = (ENABLE_USERS && (CNT_APPLET == 1 || applet_name[0] == 'u'));
-	int do_w     = (ENABLE_W     && (CNT_APPLET == 1 || applet_name[1] == '\0'));
 	int do_who   = (ENABLE_WHO   && (CNT_APPLET == 1 || applet_name[1] == 'h'));
+	int do_w     = (ENABLE_W     && (CNT_APPLET == 1 || applet_name[1] == '\0'));
+	int do_users = (ENABLE_USERS && (CNT_APPLET == 1 || applet_name[0] == 'u'));
 	struct utmpx *ut;
 	unsigned opt;
 	const char *fmt = "%s";

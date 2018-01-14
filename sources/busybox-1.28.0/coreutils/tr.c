@@ -313,10 +313,11 @@ int tr_main(int argc UNUSED_PARAM, char **argv)
 		map(vector, str1, str1_length,
 				str2, str2_length);
 	}
-	for (i = 0; i < str1_length; i++)
+	for (i = 0; i < str1_length; i++) {
 		invec[(unsigned char)(str1[i])] = TRUE;
-	for (i = 0; i < str2_length; i++)
-		outvec[(unsigned char)(str2[i])] = TRUE;
+	}
+	for (i = 0; i < str2_length; i++){
+		outvec[(unsigned char)(str2[i])] = TRUE;}
 
 	goto start_from;
 
@@ -336,8 +337,7 @@ int tr_main(int argc UNUSED_PARAM, char **argv)
 					bb_perror_msg_and_die(bb_msg_read_error);
 				break;
 			}
-			in_index = 0;
-		}
+			in_index = 0; }
 		c = str1[in_index++];
 		if ((opts & TR_OPT_delete) && invec[c])
 			continue;
@@ -347,14 +347,10 @@ int tr_main(int argc UNUSED_PARAM, char **argv)
 		) {
 			continue;
 		}
-		str2[out_index++] = last = coded;
-	}
+		str2[out_index++] = last = coded; }
 
 	if (ENABLE_FEATURE_CLEAN_UP) {
 		free(vector);
 		free(str2);
-		free(str1);
-	}
-
-	return EXIT_SUCCESS;
-}
+		free(str1); }
+	return EXIT_SUCCESS; }
